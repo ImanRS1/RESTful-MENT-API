@@ -1,19 +1,16 @@
 import mongoose from "mongoose";
 import config from 'config'
+import logger from "./logger";
 
 const connect = async () => {
   const dbUri = config.get<string>("dbUri")
 
   try {
-    console.log(dbUri);
-    
     await mongoose.connect(dbUri)
-    console.log("Connected to DB");
+    logger.info("Connected to DB");
     
   } catch (error) {
-    console.error("Could not connect to DB")
-    console.log(error);
-    
+    logger.error("Could not connect to DB")
     process.exit(1)
   }
 }
