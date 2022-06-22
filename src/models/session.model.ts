@@ -13,8 +13,8 @@ export interface SchemaDocument extends mongoose.Document {
 
 const sessionSchema = new mongoose.Schema(
 {
-  email: {
-    user: mongoose.Schema.Types.ObjectId, 
+  user: {
+    type: mongoose.Schema.Types.ObjectId, 
     ref: 'User',
   },
   valid: {
