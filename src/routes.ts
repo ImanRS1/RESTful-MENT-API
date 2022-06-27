@@ -13,6 +13,8 @@ const routes = (app: Express) => {
   app.post('/api/users', validate(createUserSchema), createUserHandler)
 
   app.post('/api/sessions', validate(createSessionSchema), createUserSessionHandler)
+
+  app.get('/api/sessions', getUserSessionsHandler)
 }
 
 export default routes

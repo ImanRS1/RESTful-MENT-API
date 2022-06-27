@@ -11,7 +11,7 @@ export const signJwt = (object: Object, options?: jwt.SignOptions | undefined) =
   });
 }
 
-const verifyJwt = (token: string) => {
+export const verifyJwt = (token: string) => {
   try {
     const decoded = jwt.verify(token, publicKey)
     return {
