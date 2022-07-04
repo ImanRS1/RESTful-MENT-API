@@ -1,12 +1,17 @@
 import mongoose from "mongoose";
+import {customAlphabet} from 'nanoid'
 import { UserDocument } from "./user.model";
 
-export interface SessionDocument extends mongoose.Document {
+const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz0123456789', 10)
+
+export interface ProductDocument extends mongoose.Document {
   user: UserDocument['_id'],
-  valid: boolean,
-  userAgent: string,
-  createdAt: Date,
-  updatedAt: Date,
+  title: string,
+  description: string,
+  price: number,
+  image: string,
+  createdAt: Date, 
+  updatedAt: Date
 }
 
 const sessionSchema = new mongoose.Schema(
