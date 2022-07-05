@@ -14,18 +14,33 @@ export interface ProductDocument extends mongoose.Document {
   updatedAt: Date
 }
 
-const sessionSchema = new mongoose.Schema(
+const productSchema = new mongoose.Schema(
 {
+  productId : {
+    type: String,
+    required: true,
+    unique: true,
+    default: () => `product_${nanoid()}`
+  },
   user: {
     type: mongoose.Schema.Types.ObjectId, 
     ref: 'User',
   },
-  valid: {
-    type: Boolean,
-    default: true,
-  },
-  userAgent: {
+  title: {
     type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: Number,
+    required: true,
+  },
+  image: {
+    type: String,
+    required: true,
   }
 },
 {
@@ -33,6 +48,6 @@ const sessionSchema = new mongoose.Schema(
 }
 )
 
-const SessionModel = mongoose.model<SessionDocument>("Session", sessionSchema)
+const ProductModel = mongoose.model<ProductDocument>("Product", productSchema)
 
-export default SessionModel
+export default ProductModel
